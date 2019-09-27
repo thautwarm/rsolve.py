@@ -1,4 +1,4 @@
-from rsolve.hm.type_system import TCEnv, HMUnify
+from rsolve.hm.unification import TCEnv, HMUnify
 from rsolve.hm.hm import *
 from rsolve.hm.nominal import *
 
