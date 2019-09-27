@@ -25,6 +25,25 @@ class Monad(abc.ABC):
 
     @classmethod
     @abc.abstractmethod
+    def seq(cls, ms):
+        if not ms:
+
+            return cls.pure(())
+
+        def apply(ms_, ret=()):
+            if not ms_:
+                return cls.pure(ret)
+
+            @cls.bind_curry(ms_[0])
+            def k(a):
+                return apply(ms_[1:], (a, *ret))
+
+            return k
+
+        return apply(ms)
+
+    @classmethod
+    @abc.abstractmethod
     def pure(self, a):
         raise NotImplemented
 
@@ -70,3 +89,17 @@ class MS(Monad):
     @staticmethod
     def put(s):
         return lambda _: ((None, s), )
+
+    @staticmethod
+    def gets(f):
+        def get_(s):
+            return (f(s), s),
+
+        return get_
+
+    @staticmethod
+    def modify(f):
+        def put_(s):
+            return (None, f(s))
+
+        return put_
