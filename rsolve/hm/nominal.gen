@@ -1,0 +1,9 @@
+typevar T;
+abc HMT(t.Generic[T]);
+data TNom(HMT[T]) nom:T;
+data TVar(HMT[T]) i:int;
+data TFresh(HMT[T]) s:str;
+data TArrow(HMT[T]) dom:HMT[T] codom:HMT[T];
+data TTup(HMT[T]) elts:t.Tuple[HMT[T], ...];
+data TForall(HMT[T]) vars:t.FrozenSet[String] inst:HMT[T];
+data TApp(HMT[T]) fn:HMT[T] arg:HMT[T];
