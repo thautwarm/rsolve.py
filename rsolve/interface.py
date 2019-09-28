@@ -1,6 +1,5 @@
 import abc
 from dataclasses import dataclass
-import typing as t
 
 
 class Monad(abc.ABC):

@@ -3,6 +3,7 @@ from rsolve.well_defined_forms import Atom, Imply, Or
 from rsolve.interface import MS
 from rsolve.build_dnf import build_nf_
 from dataclasses import dataclass
+print('running test_wff.py')
 
 
 @dataclass(frozen=True, order=True)

@@ -1,4 +1,3 @@
-from .atom_formula import *
 from .well_defined_forms import *
 from functools import reduce
 

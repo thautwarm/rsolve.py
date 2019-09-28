@@ -1,7 +1,7 @@
 from rsolve.hm.unification import TCEnv, HMUnify
 from rsolve.hm.hm import *
 from rsolve.hm.nominal import *
-
+print('running test_hm.py')
 # t1 == t2 && t1 == int32
 # =>
 # t1 = t2 = int32

@@ -1,8 +1,5 @@
 from rsolve.hm import hm
-from rsolve.hm import nominal
 from dataclasses import dataclass, field
-from rsolve.interface import MS
-from rsolve.lists import Cons, nil
 import typing as t
 Ext = t.TypeVar("Ext")
 
