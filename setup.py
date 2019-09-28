@@ -10,7 +10,7 @@ setup(
     python_requires='>=3.6.0',
     author_email='twshere@outlook.com',
     description='For constraint satisfaction problems in Python',
-    install_requires=['prettyprinter'],
+    install_requires=[],
     classifiers=[
         "Programming Language :: Python :: 3.6",
         "Programming Language :: Python :: 3.7",
