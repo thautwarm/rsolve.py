@@ -50,6 +50,13 @@ class TForall(HMT[T]):
 
 
 @dataclass(frozen=True, order=True)
+class TExist(HMT[T]):
+    vars:t.FrozenSet[str]
+    inst:HMT[T]
+    pass
+
+
+@dataclass(frozen=True, order=True)
 class TApp(HMT[T]):
     fn:HMT[T]
     arg:HMT[T]

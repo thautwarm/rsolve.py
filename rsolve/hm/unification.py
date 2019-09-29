@@ -73,6 +73,9 @@ class TCEnv(t.Generic[Ext]):
     def prune(self, x: hm.HMT):
         if isinstance(x, (hm.TFresh, hm.TNom)):
             return x
+        if isinstance(x, hm.TExist):
+            free_map = {v: self.new_tvar() for v in x.vars}
+            return self.free(free_map, self.prune(x.inst))
         if isinstance(x, hm.TForall):
             return hm.TForall(x.vars, self.prune(x.inst))
         if isinstance(x, hm.TApp):

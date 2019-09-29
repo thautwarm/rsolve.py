@@ -6,4 +6,5 @@ data TFresh(HMT[T]) s:str;
 data TArrow(HMT[T]) dom:HMT[T] codom:HMT[T];
 data TTup(HMT[T]) elts:t.Tuple[HMT[T],...];
 data TForall(HMT[T]) vars:t.FrozenSet[str] inst:HMT[T];
+data TExist(HMT[T]) vars:t.FrozenSet[str] inst:HMT[T];
 data TApp(HMT[T]) fn:HMT[T] arg:HMT[T];
