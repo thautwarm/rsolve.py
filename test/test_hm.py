@@ -37,21 +37,22 @@ assert env.prune(t2) == text32
 assert env.prune(t3) == TTup((text32, text32))
 assert env.prune(t4) == text32
 
-# x1 == exist a b. (a, b) && x1 == x3 &&
-# x3 == exist a. (text32, exist a. a) && x3 == exist a . (a, int32)
-# =>
-# x1 = x3 = (text32, int32)
-text32 = TNom(Text(32))
-env = TCEnv(None)
-x1 = env.new_tvar()
-x3 = env.new_tvar()
-eq1 = HMUnify(x1,
-              TExist(frozenset(["a", "b"]), TTup((TFresh("a"), TFresh("b")))))
-eq2 = HMUnify(x1, x3)
-eq3 = HMUnify(x3, TExist(frozenset(["a"]), TTup((int32, TFresh("a")))))
-eq4 = HMUnify(x3, TExist(frozenset(["a"]), TTup((TFresh("a"), text32))))
-
-for eq in [eq1, eq2, eq3, eq4]:
-    env.unify(eq)
-
-assert env.prune(x1) == TTup((int32, text32)) == env.prune(x3)
+# # x1 == exist a b. (a, b) && x1 == x3 &&
+# # x3 == exist a. (text32, exist a. a) && x3 == exist a . (a, int32)
+# # =>
+# # x1 = x3 = (text32, int32)
+# text32 = TNom(Text(32))
+# env = TCEnv(None)
+# x1 = env.new_tvar()
+# x3 = env.new_tvar()
+#
+# eq1 = HMUnify(x1,
+#               TExist(frozenset(["a", "b"]), TTup((TFresh("a"), TFresh("b")))))
+# eq2 = HMUnify(x1, x3)
+# eq3 = HMUnify(x3, TExist(frozenset(["a"]), TTup((int32, TFresh("a")))))
+# eq4 = HMUnify(x3, TExist(frozenset(["a"]), TTup((TFresh("a"), text32))))
+#
+# for eq in [eq1, eq2, eq3, eq4]:
+#     env.unify(eq)
+#
+# assert env.prune(x1) == TTup((int32, text32)) == env.prune(x3)
